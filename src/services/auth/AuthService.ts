@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-export const loginWithEmail = async (email: string, password: string) => {
+export const login = async (email: string, password: string) => {
   const auth = getAuth();
 
   try {

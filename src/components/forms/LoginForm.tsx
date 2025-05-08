@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { loginWithEmail } from "../../services/auth/AuthService";
+import { login } from "../../services/auth/AuthService";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 
@@ -24,7 +24,7 @@ const LoginForm: React.FC = () => {
     setAuthError(null);
     setLoading(true);
     try {
-      await loginWithEmail(data.email, data.password);
+      await login(data.email, data.password);
       // redirecionar ou mostrar mensagem de sucesso
       navigate("/");
     } catch (err: Error | unknown) {
