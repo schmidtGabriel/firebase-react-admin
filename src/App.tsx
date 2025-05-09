@@ -3,9 +3,11 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
 import SidebarLayout from "./components/ui/Sidebar";
 import { AuthProvider } from "./context/AuthContext";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Users from "./pages/Users";
+import ReactionForm from "./pages/Reactions/ReactionForm";
+import Reactions from "./pages/Reactions/Reactions";
+import UserForm from "./pages/Users/UserForm";
+import Users from "./pages/Users/Users";
 
 function App() {
   return (
@@ -20,13 +22,69 @@ function App() {
               <ProtectedRoute>
                 <SidebarLayout>
                   <Routes>
-                    <Route path="/" element={<Home />} />
                     <Route
-                      path="/users"
+                      path="/users/*"
                       element={
-                        <ProtectedRoute>
-                          <Users />
-                        </ProtectedRoute>
+                        <Routes>
+                          <Route path="" element={<Users />} />
+                          {/* <Route
+                            path="detail"
+                            element={
+                              <ProtectedRoute>
+                                <Users />
+                              </ProtectedRoute>
+                            }
+                          /> */}
+                          <Route
+                            path="new"
+                            element={
+                              <ProtectedRoute>
+                                <UserForm />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="edit"
+                            element={
+                              <ProtectedRoute>
+                                <UserForm />
+                              </ProtectedRoute>
+                            }
+                          />
+                        </Routes>
+                      }
+                    />
+
+                    <Route
+                      path="/reactions/*"
+                      element={
+                        <Routes>
+                          <Route path="" element={<Reactions />} />
+                          {/* <Route
+                            path="detail"
+                            element={
+                              <ProtectedRoute>
+                                <Reactions />
+                              </ProtectedRoute>
+                            }
+                          /> */}
+                          <Route
+                            path="new"
+                            element={
+                              <ProtectedRoute>
+                                <ReactionForm />
+                              </ProtectedRoute>
+                            }
+                          />
+                          <Route
+                            path="edit"
+                            element={
+                              <ProtectedRoute>
+                                <ReactionForm />
+                              </ProtectedRoute>
+                            }
+                          />
+                        </Routes>
                       }
                     />
                   </Routes>

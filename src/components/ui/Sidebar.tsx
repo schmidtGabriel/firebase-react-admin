@@ -5,6 +5,7 @@ import {
   LayoutDashboard,
   Menu,
   MoonIcon,
+  SmileIcon,
   SunIcon,
   Users,
   X,
@@ -15,6 +16,7 @@ import { Link, useLocation } from "react-router-dom";
 const navItems = [
   { name: "Dashboard", path: "/", icon: <LayoutDashboard size={18} /> },
   { name: "Users", path: "/users", icon: <Users size={18} /> },
+  { name: "Reactions", path: "/reactions", icon: <SmileIcon size={18} /> },
 ];
 
 export default function SidebarLayout({
